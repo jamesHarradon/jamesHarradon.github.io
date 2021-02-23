@@ -28,25 +28,7 @@
             return array[Math.floor(Math.random()*i)];
         };
 
-        
 
-        // const randF = () => {
-        //     let f = femaleCelebs.length;
-        //     return femaleCelebs[Math.floor(Math.random()*f)]
-        // };
-
-        // const randM = () => {
-        //     let m = maleCelebs.length;
-        //     return maleCelebs[Math.floor(Math.random()*m)]
-        // };
-
-        // const randA = () => {
-        //     let a = activities.length;
-        //     return activities[Math.floor(Math.random()*a)]
-        // }
-
-
-        // with the revised code, element is no longer a function but is a single random element, therefore element() is no longer generating a random element as before. How to get around this?
         const arrGen = arr => {
             
             let myArray = [whichArr(arr), whichArr(arr), whichArr(arr)];
@@ -59,24 +41,23 @@
         };
 
 
-
         const snogMarryAvoid = sex => {
 
             if (sex === "male") {
-                return `${arrGen(whichArr(activities))[0]} - ${arrGen(whichArr(activities))[1]} - ${arrGen(whichArr(activities))[2]}: ${arrGen(whichArr(maleCelebs))[0]}, ${arrGen(whichArr(maleCelebs))[1]} and ${arrGen(whichArr(maleCelebs))[2]}`;
+                return `${arrGen(activities)[0]} - ${arrGen(activities)[1]} - ${arrGen(activities)[2]}: ${arrGen(maleCelebs)[0]}, ${arrGen(maleCelebs)[1]} and ${arrGen(maleCelebs)[2]}`;
             };
 
             if (sex === "female") {
-                return `${arrGen(whichArr(activities))[0]} - ${arrGen(whichArr(activities))[1]} - ${arrGen(whichArr(activities))[2]}: ${arrGen(whichArr(femaleCelebs))[0]}, ${arrGen(whichArr(femaleCelebs))[1]} and ${arrGen(whichArr(femaleCelebs))[2]}`;
+                return `${arrGen(activities)[0]} - ${arrGen(activities)[1]} - ${arrGen(activities)[2]}: ${arrGen(femaleCelebs)[0]}, ${arrGen(femaleCelebs)[1]} and ${arrGen(femaleCelebs)[2]}`;
             }
 
             if (sex === "mix") {
                 const num = () => { return Math.ceil(Math.random()*2)};
                 
                 const maleFemale = () => {
-                    return num() < 2 ? arrGen(whichArr(maleCelebs)): arrGen(whichArr(femaleCelebs));
+                    return num() < 2 ? arrGen(maleCelebs): arrGen(femaleCelebs);
                 };
-                return `${arrGen(whichArr(activities))[0]} - ${arrGen(whichArr(activities))[1]} - ${arrGen(whichArr(activities))[2]}: ${maleFemale()[0]}, ${maleFemale()[1]} and ${maleFemale()[2]}`;
+                return `${arrGen(activities)[0]} - ${arrGen(activities)[1]} - ${arrGen(activities)[2]}: ${maleFemale()[0]}, ${maleFemale()[1]} and ${maleFemale()[2]}`;
             }
             
         }
