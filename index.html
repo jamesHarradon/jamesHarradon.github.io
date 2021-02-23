@@ -15,7 +15,7 @@
 
     <script>
 
-        const activities = ["Candle Lit Dinner", "Salsa Dancing", "Dodgeball", "Sky Diving", "Skinny Dip", "Road Trip", "Table Tennis", "Beer Pong", "Tandem Bike Ride", "Jungle Hike", "Mud Wrestling", "White Water Rafting", "Gym Session", "Parasailing", "Arcade", "Monopoly", "Go Karting", "Night in a Haunted House", "Pottery Class", "Wine Tasting", "Yoga Class", "Netflix Binge", "Food Fight", "Mini Golf", "Tobogganing", "Water Fight", "Roller Disco", "Paintballing", "Spa Weekend", "Sumo Wrestling", "Axe Throwing"]
+        const activities = ["Candle Lit Dinner", "Salsa Dancing", "Dodgeball", "Sky Diving", "Skinny Dip", "Road Trip", "Table Tennis", "Beer Pong", "Tandem Bike Ride", "Jungle Hike", "Mud Wrestling", "White Water Rafting", "Gym Session", "Parasailing", "Arcade", "Monopoly", "Go Karting", "Night in a Haunted House", "Pottery Class", "Wine Tasting", "Yoga Class", "Netflix Binge", "Food Fight", "Mini Golf", "Tobogganing", "Water Fight", "Roller Disco", "Get Drunk", "Paintballing", "Spa Weekend", "Sumo Wrestling", "Axe Throwing"]
 
         const maleCelebs = ["Brad Pitt", "Tom Cruise", "Zac Efron", "Hugh Grant", "Hugh Jackman", "George Clooney", "Ryan Reynolds", "Daniel Craig", "Ed Sheeran", "Mel Gibson", "Vince Vaughn", "Jack Black", "Steve Buscemi", "Seth Rogen", "Andy Samberg", "Justin Bieber", "Post Malone", "Kanye West", "Piers Morgan", "Robert DeNiro", "James Corden", "Donald Trump", "Benedict Cumberbatch", "Elijah Wood", "Jared Leto", "Robert Pattinson", "Mark Wahlberg", "Shia LaBeouf", "Christian Bale", "Jonah Hill", "Will Ferrell", "Rupert Grint", "Russell Brand", "Tom Hanks", "Hugh Laurie", "Jack Nicholson", "Idris Elba", "Bill Hader", "Danny DeVito", "Arnold Schwarzenegger", "Anthony Hopkins", "Tommy Lee Jones", "Harry Styles"," Jim Carey", "Mike Myers", "Prince Harry", "Jude Law"];
         
@@ -36,13 +36,16 @@
             let myArray = [whichArr(arr), whichArr(arr), whichArr(arr)];
             
             while (myArray[1] === myArray[0] || myArray[2] === myArray[1] || myArray[0] === myArray[2]){
-                    myArray = [whichArr(arr), whichArr(arr), whichArr(arr)]
+                    myArray = [whichArr(arr), whichArr(arr), whichArr(arr)];
             }
             
             return myArray;
         };
 
         // this function returns an array of three random activities and either male, female or mixed celebs depending on whether the parameter states "male", "female" or "mix".
+
+        // there is a problem, elements in the same category are appearing more than once! 
+        // - i think this is because the arrGen function is being called each time for a return value so generating a new array each time.
         const snogMarryAvoid = sex => {
 
             if (sex === "male") {
@@ -55,7 +58,7 @@
 
             if (sex === "mix") {
                 const num = () => { return Math.ceil(Math.random()*2)};
-                // this part of the function returns either a male or female depending on the outcome of maleFemale
+                // as this section is mixed, the function returns either a male or female depending on the outcome of maleFemale
                 const maleFemale = () => {
                     return num() < 2 ? arrGen(maleCelebs): arrGen(femaleCelebs);
                 };
@@ -63,6 +66,9 @@
             }
             
         }
+
+        // What does this game do at the moment?
+        // - produces a random list of 3 activities and 3 random celebrities depending on the argument, so that you can then decide which activity you would do with which celeb. It can be run with all male, all female or a mix.
 
         // How to make this game better?
 
