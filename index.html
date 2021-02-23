@@ -28,7 +28,9 @@
             return array[Math.floor(Math.random()*i)];
         };
 
-
+        // this function takes a parameter of an array and calls the whichArr function on it to produce an array of 3 random elements, be it male celebs, female celebs, or activities.
+        // The function then runs a while loop on the array to ensure no three elements are the same, and returns myArray. 
+        
         const arrGen = arr => {
             
             let myArray = [whichArr(arr), whichArr(arr), whichArr(arr)];
@@ -40,7 +42,7 @@
             return myArray;
         };
 
-
+        // this function returns an array of three random activities and either male, female or mixed celebs depending on whether the parameter states "male", "female" or "mix".
         const snogMarryAvoid = sex => {
 
             if (sex === "male") {
@@ -53,7 +55,7 @@
 
             if (sex === "mix") {
                 const num = () => { return Math.ceil(Math.random()*2)};
-                
+                // this part of the function returns either a male or female depending on the outcome of maleFemale
                 const maleFemale = () => {
                     return num() < 2 ? arrGen(maleCelebs): arrGen(femaleCelebs);
                 };
