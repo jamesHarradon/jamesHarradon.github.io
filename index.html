@@ -44,11 +44,7 @@
 
         // this function returns an array of three random activities and either male, female or mixed celebs depending on whether the parameter states "male", "female" or "mix".
 
-        // there is a problem, elements in the same category are appearing more than once! 
-        // - i think this is because the arrGen function is being called each time for a return value so generating a new array each time.
-        
-        // Possible Solutions
-        // - variables could be created inside the snogMarryAvoid function for each category and then the index numbers referenced, however this would return the same activities for each time the function is called at the same time. (Not if i put them within each if statement)
+        // needed to call the arrGen function inside each if statement to avoid element reoccurrances
         const snogMarryAvoid = sex => {
 
             if (sex === "male") {
@@ -67,10 +63,10 @@
                 let act = arrGen(activities)
                 const num = () => { return Math.ceil(Math.random()*2)};
                 // as this section is mixed, the function returns either a male or female depending on the outcome of maleFemale
-                const maleFemale = () => {
+                const mF = () => {
                     return num() < 2 ? arrGen(maleCelebs): arrGen(femaleCelebs);
                 };
-                return `${act[0]} - ${act[1]} - ${act[2]}: ${maleFemale()[0]}, ${maleFemale()[1]} and ${maleFemale()[2]}`;
+                return `${act[0]} - ${act[1]} - ${act[2]}: ${mF()[0]}, ${mF()[1]} and ${mF()[2]}`;
             }
             
         }
@@ -79,6 +75,8 @@
         // - produces a random list of 3 activities and 3 random celebrities depending on the argument, so that you can then decide which activity you would do with which celeb. It can be run with all male, all female or a mix.
 
         // How to make this game better?
+
+        // - click on you favourite celeb out of the three to produce a image of them, perhaps this can be done without having an image of every celeb but by recalling the first image of a search with a string with their name? (names would be displayed using span classes so that they can be selected)
 
         // - 
 
