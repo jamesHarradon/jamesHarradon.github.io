@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dinner Dancing Dodgeball</title>
+</head>
+<body>
+    
+
+
+
+
+
+    <script>
+
+        const activities = ["Candle Lit Dinner", "Salsa Dancing", "Dodgeball", "Sky Diving", "Skinny Dip", "Road Trip", "Table Tennis", "Beer Pong", "Tandem Bike Ride", "Jungle Hike", "Mud Wrestling", "White Water Rafting", "Gym Session", "Parasailing", "Arcade", "Monopoly", "Go Karting", "Night in a Haunted House", "Pottery Class", "Wine Tasting", "Yoga Class", "Netflix Binge", "Food Fight", "Mini Golf", "Tobogganing", "Water Fight", "Roller Disco", "Paintballing", "Spa Weekend", "Sumo Wrestling", "Axe Throwing"]
+
+        const maleCelebs = ["Brad Pitt", "Tom Cruise", "Zac Efron", "Hugh Grant", "Hugh Jackman", "George Clooney", "Ryan Reynolds", "Daniel Craig", "Ed Sheeran", "Mel Gibson", "Vince Vaughn", "Jack Black", "Steve Buscemi", "Seth Rogen", "Andy Samberg", "Justin Bieber", "Post Malone", "Kanye West", "Piers Morgan", "Robert DeNiro", "James Corden", "Donald Trump", "Benedict Cumberbatch", "Elijah Wood", "Jared Leto", "Robert Pattinson", "Mark Wahlberg", "Shia LaBeouf", "Christian Bale", "Jonah Hill", "Will Ferrell", "Rupert Grint", "Russell Brand", "Tom Hanks", "Hugh Laurie", "Jack Nicholson", "Idris Elba", "Bill Hader", "Danny DeVito", "Arnold Schwarzenegger", "Anthony Hopkins", "Tommy Lee Jones", "Harry Styles"," Jim Carey", "Mike Myers", "Prince Harry", "Jude Law"];
+        
+        const femaleCelebs = ["Janet Jackson", "Kim Kardashian", "Taylor Swift", "Meryl Streep", "Cameron Diaz", "Gywneth Paltrow", "Michelle Obama", "Ana De Armas", "Jennifer Lopez", "Judy Dench", "Pamela Anderson", "Sofia Vergara", "Jennifer Lawrence", "Rihanna", "Selena Gomez", "Angelina Jolie", "Natalie Portman", "Jessica Alba", "Oprah Winfrey", "Halle Berry", "Nicole Kidman", "Ellen DeGeneres", "Amber Heard", "Anna Kendrick", "Serena Williams", "Kate Hudson", "Katy Perry", "Catherine Zeta-Jones", "Mila Kunis", "Shakira", "Miley Cyrus", "Kate Beckinsale", "Holly Willoughby", "Susan Boyle", "Queen Elizabeth II", "Megan Markle", "Gillian Anderson", "Reece Witherspoon", "Emma Watson", "Victoria Beckham", "Nicki Menaj", "Dua Lipa", "Helen Bonham Carter", "Thandie Newton", "Kate Moss", "Kate Winslet", "Helen Mirren"]
+
+        const randomFemale = () => {
+            let f = femaleCelebs.length;
+            return femaleCelebs[Math.floor(Math.random()*f)]
+        };
+
+        const randomMale = () => {
+            let m = maleCelebs.length;
+            return maleCelebs[Math.floor(Math.random()*m)]
+        };
+
+        const randomActivity = () => {
+            let a = activities.length;
+            return activities[Math.floor(Math.random()*a)]
+        }
+
+        // at the moment, generating a random celeb could potentially produce three of the same person for the snogMarryAvoid function. I need to eliminate the possibility of two or three being the same with the mininal amount of code.
+
+        let mArray = [];
+        let fArray = [];
+        let aArray = [];
+
+
+        // i am sure that i can write one function instead of the three following functions, as they are all doing the same thing???
+        const maleArray = (function() {
+            
+            mArray = [randomMale(), randomMale(), randomMale()];
+            
+            while (mArray[1] === mArray[0] || mArray[2] === mArray[1] || mArray[0] === mArray[2]){
+                    mArray = [randomMale(), randomMale(), randomMale()]
+            }
+            
+        })();
+
+        const femaleArray = (function() {
+            
+            fArray = [randomFemale(), randomFemale(), randomFemale()];
+            
+            while (fArray[1] === fArray[0] || fArray[2] === fArray[1] || fArray[0] === fArray[2]){
+                    fArray = [randomFemale(), randomFemale(), randomFemale()]
+            }
+            
+        })();
+
+        const activityArray = (function() {
+            
+            aArray = [randomActivity(), randomActivity(), randomActivity()];
+            
+            while (aArray[1] === aArray[0] || aArray[2] === aArray[1] || aArray[0] === aArray[2]){
+                    aArray = [randomActivity(), randomActivity(), randomActivity()]
+            }
+            
+        })();
+
+        // i can try and reduce the code below using parameters
+
+        // at the moment the function is giving the same activities for male, female and mix when called at the same time. 
+        // i want it to randomise each time it is called. 
+
+        const snogMarryAvoid = sex => {
+            if (sex === "male") {
+                return `${aArray[0]} - ${aArray[1]} - ${aArray[2]}: ${mArray[0]}, ${mArray[1]} and ${mArray[2]}`;
+            };
+
+            if (sex === "female") {
+                return `${aArray[0]} - ${aArray[1]} - ${aArray[2]}: ${fArray[0]}, ${fArray[1]} and ${fArray[2]}`;
+            }
+
+            
+
+            if (sex === "mix") {
+                const num = () => { return Math.ceil(Math.random()*2)};
+                
+                const whichArr = () => {
+                    return num() < 2 ? fArray: mArray;
+                };
+                return `${aArray[0]} - ${aArray[1]} - ${aArray[2]}: ${whichArr()[0]}, ${whichArr()[1]} and ${whichArr()[2]}`;
+            }
+            
+        }
+
+        // How to make this game better?
+
+        // - 
+
+        
+        console.log(snogMarryAvoid("male"))
+        console.log(snogMarryAvoid("female"))
+        console.log(snogMarryAvoid("mix"))
+
+       
+        
+
+
+    </script>
+</body>
+</html>
