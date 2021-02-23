@@ -46,23 +46,31 @@
 
         // there is a problem, elements in the same category are appearing more than once! 
         // - i think this is because the arrGen function is being called each time for a return value so generating a new array each time.
+        
+        // Possible Solutions
+        // - variables could be created inside the snogMarryAvoid function for each category and then the index numbers referenced, however this would return the same activities for each time the function is called at the same time. (Not if i put them within each if statement)
         const snogMarryAvoid = sex => {
 
             if (sex === "male") {
-                return `${arrGen(activities)[0]} - ${arrGen(activities)[1]} - ${arrGen(activities)[2]}: ${arrGen(maleCelebs)[0]}, ${arrGen(maleCelebs)[1]} and ${arrGen(maleCelebs)[2]}`;
+                let act = arrGen(activities);
+                let m = arrGen(maleCelebs)
+                return `${act[0]} - ${act[1]} - ${act[2]}: ${m[0]}, ${m[1]} and ${m[2]}`;
             };
 
             if (sex === "female") {
-                return `${arrGen(activities)[0]} - ${arrGen(activities)[1]} - ${arrGen(activities)[2]}: ${arrGen(femaleCelebs)[0]}, ${arrGen(femaleCelebs)[1]} and ${arrGen(femaleCelebs)[2]}`;
+                let act = arrGen(activities);
+                let f = arrGen(femaleCelebs);
+                return `${act[0]} - ${act[1]} - ${act[2]}: ${f[0]}, ${f[1]} and ${f[2]}`;
             }
 
             if (sex === "mix") {
+                let act = arrGen(activities)
                 const num = () => { return Math.ceil(Math.random()*2)};
                 // as this section is mixed, the function returns either a male or female depending on the outcome of maleFemale
                 const maleFemale = () => {
                     return num() < 2 ? arrGen(maleCelebs): arrGen(femaleCelebs);
                 };
-                return `${arrGen(activities)[0]} - ${arrGen(activities)[1]} - ${arrGen(activities)[2]}: ${maleFemale()[0]}, ${maleFemale()[1]} and ${maleFemale()[2]}`;
+                return `${act[0]} - ${act[1]} - ${act[2]}: ${maleFemale()[0]}, ${maleFemale()[1]} and ${maleFemale()[2]}`;
             }
             
         }
