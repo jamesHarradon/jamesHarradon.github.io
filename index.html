@@ -21,92 +21,62 @@
         
         const femaleCelebs = ["Janet Jackson", "Kim Kardashian", "Taylor Swift", "Meryl Streep", "Cameron Diaz", "Gywneth Paltrow", "Michelle Obama", "Ana De Armas", "Jennifer Lopez", "Judy Dench", "Pamela Anderson", "Sofia Vergara", "Jennifer Lawrence", "Rihanna", "Selena Gomez", "Angelina Jolie", "Natalie Portman", "Jessica Alba", "Oprah Winfrey", "Halle Berry", "Nicole Kidman", "Ellen DeGeneres", "Amber Heard", "Anna Kendrick", "Serena Williams", "Kate Hudson", "Katy Perry", "Catherine Zeta-Jones", "Mila Kunis", "Shakira", "Miley Cyrus", "Kate Beckinsale", "Holly Willoughby", "Susan Boyle", "Queen Elizabeth II", "Megan Markle", "Gillian Anderson", "Reece Witherspoon", "Emma Watson", "Victoria Beckham", "Nicki Menaj", "Dua Lipa", "Helen Bonham Carter", "Thandie Newton", "Kate Moss", "Kate Winslet", "Helen Mirren"]
 
-        const randF = () => {
-            let f = femaleCelebs.length;
-            return femaleCelebs[Math.floor(Math.random()*f)]
+
+        // this function produces one random element from whichever array (above) is put into its parentheses.
+        const whichArr = array => {
+            let i = array.length;
+            return array[Math.floor(Math.random()*i)];
         };
-
-        const randM = () => {
-            let m = maleCelebs.length;
-            return maleCelebs[Math.floor(Math.random()*m)]
-        };
-
-        const randA = () => {
-            let a = activities.length;
-            return activities[Math.floor(Math.random()*a)]
-        }
-
-        // at the moment, generating a random celeb could potentially produce three of the same person for the snogMarryAvoid function. I need to eliminate the possibility of two or three being the same with the mininal amount of code.
 
         
 
+        // const randF = () => {
+        //     let f = femaleCelebs.length;
+        //     return femaleCelebs[Math.floor(Math.random()*f)]
+        // };
 
-        // i am sure that i can write one function instead of the three following functions, as they are all doing the same thing???
+        // const randM = () => {
+        //     let m = maleCelebs.length;
+        //     return maleCelebs[Math.floor(Math.random()*m)]
+        // };
 
-        // How am I going to do this??
-
-        // - The arrays for the male celeb, female celeb and activity are all the same layout, just the content needs to change.
-        // - The snogMarryAvoid function is the function that needs to call each of these functions to generate its output.
-        // - The snogMarryAvoid function needs to call each function individually.
-        // - 
+        // const randA = () => {
+        //     let a = activities.length;
+        //     return activities[Math.floor(Math.random()*a)]
+        // }
 
 
-        const arrGen = (thing) => {
+        // with the revised code, element is no longer a function but is a single random element, therefore element() is no longer generating a random element as before. How to get around this?
+        const arrGen = arr => {
             
-            let myArray = [thing(), thing(), thing()];
+            let myArray = [whichArr(arr), whichArr(arr), whichArr(arr)];
             
             while (myArray[1] === myArray[0] || myArray[2] === myArray[1] || myArray[0] === myArray[2]){
-                    myArray = [thing(), thing(), thing()]
+                    myArray = [whichArr(arr), whichArr(arr), whichArr(arr)]
             }
             
             return myArray;
         };
 
-        // const femaleArray = (function() {
-            
-        //     fArray = [randomFemale(), randomFemale(), randomFemale()];
-            
-        //     while (fArray[1] === fArray[0] || fArray[2] === fArray[1] || fArray[0] === fArray[2]){
-        //             fArray = [randomFemale(), randomFemale(), randomFemale()]
-        //     }
 
-            
-            
-        // })();
-
-        // const activityArray = (function() {
-            
-        //     aArray = [randomActivity(), randomActivity(), randomActivity()];
-            
-        //     while (aArray[1] === aArray[0] || aArray[2] === aArray[1] || aArray[0] === aArray[2]){
-        //             aArray = [randomActivity(), randomActivity(), randomActivity()]
-        //     }
-            
-        // })();
-
-        // i can try and reduce the code below using parameters
-
-        // at the moment the function is giving the same activities for male, female and mix when called at the same time. 
-        // i want it to randomise each time it is called. 
 
         const snogMarryAvoid = sex => {
+
             if (sex === "male") {
-                return `${arrGen(randA)[0]} - ${arrGen(randA)[1]} - ${arrGen(randA)[2]}: ${arrGen(randM)[0]}, ${arrGen(randM)[1]} and ${arrGen(randM)[2]}`;
+                return `${arrGen(whichArr(activities))[0]} - ${arrGen(whichArr(activities))[1]} - ${arrGen(whichArr(activities))[2]}: ${arrGen(whichArr(maleCelebs))[0]}, ${arrGen(whichArr(maleCelebs))[1]} and ${arrGen(whichArr(maleCelebs))[2]}`;
             };
 
             if (sex === "female") {
-                return `${arrGen(randA)[0]} - ${arrGen(randA)[1]} - ${arrGen(randA)[2]}: ${arrGen(randF)[0]}, ${arrGen(randF)[1]} and ${arrGen(randF)[2]}`;
+                return `${arrGen(whichArr(activities))[0]} - ${arrGen(whichArr(activities))[1]} - ${arrGen(whichArr(activities))[2]}: ${arrGen(whichArr(femaleCelebs))[0]}, ${arrGen(whichArr(femaleCelebs))[1]} and ${arrGen(whichArr(femaleCelebs))[2]}`;
             }
-
-            
 
             if (sex === "mix") {
                 const num = () => { return Math.ceil(Math.random()*2)};
                 
-                const whichArr = () => {
-                    return num() < 2 ? arrGen(randM): arrGen(randF);
+                const maleFemale = () => {
+                    return num() < 2 ? arrGen(whichArr(maleCelebs)): arrGen(whichArr(femaleCelebs));
                 };
-                return `${arrGen(randA)[0]} - ${arrGen(randA)[1]} - ${arrGen(randA)[2]}: ${whichArr()[0]}, ${whichArr()[1]} and ${whichArr()[2]}`;
+                return `${arrGen(whichArr(activities))[0]} - ${arrGen(whichArr(activities))[1]} - ${arrGen(whichArr(activities))[2]}: ${maleFemale()[0]}, ${maleFemale()[1]} and ${maleFemale()[2]}`;
             }
             
         }
