@@ -4,111 +4,202 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dinner Dancing Dodgeball</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Benne&family=Lobster&family=Varela+Round&display=swap" rel="stylesheet">
+
+    
+    <link href="https://fonts.googleapis.com/css2?family=Lobster+Two&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Lobster Two', cursive;
+            word-spacing: 0.6em;
+            line-height: 2em;
+            width: 700px;
+            margin: 0px auto;
+            
+        }
+
+        h1 {
+            font-family: 'Lobster', cursive;
+            font-size: 4em;
+            /*-webkit-text-stroke adds a outline within the text, not outside it, the below does a text shadow top right bottom and left. 
+            text-shadow: 2px 0 0 white, 0 2px 0 white, -2px 0 0 white, 0 -2px 0 white, 5px 0 4px black, 0 5px 4px black, -5px 0 4px black, 0 -5px 4px black; */
+            text-shadow:
+                -2px -2px 0 white,
+                0   -2px 0 white,
+                2px -2px 0 white,
+                2px  0   0 white,
+                2px  2px 0 white,
+                0    2px 0 white,
+                -2px  2px 0 white,
+                -2px  0   0 white;
+            
+            background-color: aqua;
+            text-align: center;
+            border-bottom: 2px solid rgb(0, 224, 224);
+            margin-bottom: 5px;
+            padding: 15px;
+            
+        }
+
+        h2 {
+            font-family: 'Lobster', cursive;
+            font-size: 2em;
+            text-shadow:
+                -1px -1px 0 white,
+                0   -1px 0 white,
+                1px -1px 0 white,
+                1px  0   0 white,
+                1px  1px 0 white,
+                0    1px 0 white,
+                -1px  1px 0 white,
+                -1px  0   0 white;
+            text-align: center;
+            margin-top: 0px;
+            border-bottom: 2px solid rgb(255, 206, 147);
+            background-color: bisque;
+            
+        }
+
+        .section {
+            text-align: center;
+            background-color: rgb(234, 255, 221);
+            border-bottom: 2px solid rgb(208, 255, 179);
+        }
+
+        .activities {
+            font-family: 'Lobster Two', cursive;
+            font-size: 1.5em;
+            
+            
+        }
+
+        .males {
+            font-size: 1.5em;
+            color: aqua;
+            text-shadow: 1px 1px 1px black;
+        }
+
+        .females {
+            font-size: 1.5em;
+            color: bisque;
+            text-shadow: 1px 1px 1px black;
+        }
+
+        .mix {
+            font-size: 1.5em;
+            text-shadow: 1px 1px 1px black;
+            color: lightgreen;
+        }
+
+
+
+    </style>
+    <title>Celebrity Date</title>
 </head>
 <body>
+    <h1>Celebrity Date!</h1>
+    
     
 
+    <h2>Match a Celeb with a Date</h2>
 
+    <div id= "textArea">
+
+        <p id="male"></p>
+        <p id="female"></p>
+        <p id="mix"></p>
+
+    </div>
 
 
 
     <script>
 
-        const activities = ["Candle Lit Dinner", "Salsa Dancing", "Dodgeball", "Sky Diving", "Skinny Dip", "Road Trip", "Table Tennis", "Beer Pong", "Tandem Bike Ride", "Jungle Hike", "Mud Wrestling", "White Water Rafting", "Gym Session", "Parasailing", "Arcade", "Monopoly", "Go Karting", "Night in a Haunted House", "Pottery Class", "Wine Tasting", "Yoga Class", "Netflix Binge", "Food Fight", "Mini Golf", "Tobogganing", "Water Fight", "Roller Disco", "Paintballing", "Spa Weekend", "Sumo Wrestling", "Axe Throwing"]
+        const activities = ["Candle Lit Dinner", "Salsa Dancing", "Dodgeball", "Sky Diving", "Skinny Dip", "Road Trip", "Table Tennis", "Beer Pong", "Tandem Bike Ride", "Jungle Hike", "Mud Wrestling", "White Water Rafting", "Silent Disco", "Gym Session", "Parasailing", "Arcade", "Monopoly", "Nudist Beach", "Go Karting", "Night in a Haunted House", "Pottery Class", "Wine Tasting", "Yoga Class", "Netflix Binge", "Food Fight", "Mini Golf", "Tobogganing", "Water Fight", "Roller Disco", "Get Drunk", "Paintballing", "Spa Weekend", "Sumo Wrestling", "Shark Cage", "Axe Throwing"]
 
-        const maleCelebs = ["Brad Pitt", "Tom Cruise", "Zac Efron", "Hugh Grant", "Hugh Jackman", "George Clooney", "Ryan Reynolds", "Daniel Craig", "Ed Sheeran", "Mel Gibson", "Vince Vaughn", "Jack Black", "Steve Buscemi", "Seth Rogen", "Andy Samberg", "Justin Bieber", "Post Malone", "Kanye West", "Piers Morgan", "Robert DeNiro", "James Corden", "Donald Trump", "Benedict Cumberbatch", "Elijah Wood", "Jared Leto", "Robert Pattinson", "Mark Wahlberg", "Shia LaBeouf", "Christian Bale", "Jonah Hill", "Will Ferrell", "Rupert Grint", "Russell Brand", "Tom Hanks", "Hugh Laurie", "Jack Nicholson", "Idris Elba", "Bill Hader", "Danny DeVito", "Arnold Schwarzenegger", "Anthony Hopkins", "Tommy Lee Jones", "Harry Styles"," Jim Carey", "Mike Myers", "Prince Harry", "Jude Law"];
+        const maleCelebs = ["Brad Pitt", "Tom Cruise", "Zac Efron", "Hugh Grant", "Jay-Z", "Hugh Jackman", "George Clooney", "Ryan Reynolds", "Daniel Craig", "Ed Sheeran", "Mel Gibson", "Vince Vaughn", "Jack Black", "Steve Buscemi", "Seth Rogen", "Andy Samberg", "Justin Bieber", "Michael Caine", "Simon Cowell", "Post Malone", "Sasha Baron Cohen", "Kanye West", "Piers Morgan", "Robert DeNiro", "James Corden", "Donald Trump", "Benedict Cumberbatch", "Elijah Wood", "Jimmy Carr", "Jared Leto", "Robert Pattinson", "Mark Wahlberg", "Shia LaBeouf", "Christian Bale", "Jonah Hill", "Will Ferrell", "Rupert Grint", "Russell Brand", "Tom Hanks", "Hugh Laurie", "Jack Nicholson", "Idris Elba", "Bill Hader", "Danny DeVito", "Arnold Schwarzenegger", "Anthony Hopkins", "Tommy Lee Jones", "Harry Styles"," Jim Carey", "Mike Myers", "Prince Harry", "Jude Law"];
         
-        const femaleCelebs = ["Janet Jackson", "Kim Kardashian", "Taylor Swift", "Meryl Streep", "Cameron Diaz", "Gywneth Paltrow", "Michelle Obama", "Ana De Armas", "Jennifer Lopez", "Judy Dench", "Pamela Anderson", "Sofia Vergara", "Jennifer Lawrence", "Rihanna", "Selena Gomez", "Angelina Jolie", "Natalie Portman", "Jessica Alba", "Oprah Winfrey", "Halle Berry", "Nicole Kidman", "Ellen DeGeneres", "Amber Heard", "Anna Kendrick", "Serena Williams", "Kate Hudson", "Katy Perry", "Catherine Zeta-Jones", "Mila Kunis", "Shakira", "Miley Cyrus", "Kate Beckinsale", "Holly Willoughby", "Susan Boyle", "Queen Elizabeth II", "Megan Markle", "Gillian Anderson", "Reece Witherspoon", "Emma Watson", "Victoria Beckham", "Nicki Menaj", "Dua Lipa", "Helen Bonham Carter", "Thandie Newton", "Kate Moss", "Kate Winslet", "Helen Mirren"]
+        const femaleCelebs = ["Janet Jackson", "Kim Kardashian", "Taylor Swift", "Meryl Streep", "Cameron Diaz", "Gywneth Paltrow", "Michelle Obama", "Ana De Armas", "Rebel Wilson", "Jennifer Lopez", "Judy Dench", "Pamela Anderson", "Sofia Vergara", "Jennifer Lawrence", "Rihanna", "Selena Gomez", "Angelina Jolie", "Isla Fisher", "Natalie Portman", "Jessica Alba", "Oprah Winfrey", "Sarah Silverman", "Halle Berry", "Nicole Kidman", "Ellen DeGeneres", "Amber Heard", "Anna Kendrick", "Serena Williams", "Beyonce", "Kate Hudson", "Katy Perry", "Sandra Bullock", "Catherine Zeta-Jones", "Mila Kunis", "Shakira", "Miley Cyrus", "Kate Beckinsale", "Holly Willoughby", "Susan Boyle", "Ivanka Trump", "Megan Markle", "Gillian Anderson", "Reece Witherspoon", "Emma Watson", "Victoria Beckham", "Nicki Menaj", "Dua Lipa", "Helen Bonham Carter", "Thandie Newton", "Kate Moss", "Kate Winslet", "Helen Mirren"];
 
-        const randomFemale = () => {
-            let f = femaleCelebs.length;
-            return femaleCelebs[Math.floor(Math.random()*f)]
+
+        // this function produces one random element from whichever array (above) is put into its parentheses.
+        const whichArr = array => {
+            let i = array.length;
+            return array[Math.floor(Math.random()*i)];
         };
 
-        const randomMale = () => {
-            let m = maleCelebs.length;
-            return maleCelebs[Math.floor(Math.random()*m)]
+        // this function takes a parameter of an array and calls the whichArr function on it to produce an array of 3 random elements, be it male celebs, female celebs, or activities.
+        // The function then runs a while loop on the array to ensure no three elements are the same, and returns myArray. 
+        
+        const arrGen = arr => {
+            
+            let myArray = [whichArr(arr), whichArr(arr), whichArr(arr)];
+            
+            while (myArray[1] === myArray[0] || myArray[2] === myArray[1] || myArray[0] === myArray[2]){
+                    myArray = [whichArr(arr), whichArr(arr), whichArr(arr)];
+            }
+            
+            return myArray;
         };
 
-        const randomActivity = () => {
-            let a = activities.length;
-            return activities[Math.floor(Math.random()*a)]
-        }
+        // this function returns an array of three random activities and either male, female or mixed celebs depending on whether the parameter states "male", "female" or "mix".
 
-        // at the moment, generating a random celeb could potentially produce three of the same person for the snogMarryAvoid function. I need to eliminate the possibility of two or three being the same with the mininal amount of code.
+        // needed to call the arrGen function inside each if statement to avoid element reoccurrances. As I found out, if i call the function within the return statement for each element it produces a different array each time fromwhich picking a different index, therefore creating the possibility of celebs appearing more than once.
 
-        let mArray = [];
-        let fArray = [];
-        let aArray = [];
-
-
-        // i am sure that i can write one function instead of the three following functions, as they are all doing the same thing???
-        const maleArray = (function() {
-            
-            mArray = [randomMale(), randomMale(), randomMale()];
-            
-            while (mArray[1] === mArray[0] || mArray[2] === mArray[1] || mArray[0] === mArray[2]){
-                    mArray = [randomMale(), randomMale(), randomMale()]
-            }
-            
-        })();
-
-        const femaleArray = (function() {
-            
-            fArray = [randomFemale(), randomFemale(), randomFemale()];
-            
-            while (fArray[1] === fArray[0] || fArray[2] === fArray[1] || fArray[0] === fArray[2]){
-                    fArray = [randomFemale(), randomFemale(), randomFemale()]
-            }
-            
-        })();
-
-        const activityArray = (function() {
-            
-            aArray = [randomActivity(), randomActivity(), randomActivity()];
-            
-            while (aArray[1] === aArray[0] || aArray[2] === aArray[1] || aArray[0] === aArray[2]){
-                    aArray = [randomActivity(), randomActivity(), randomActivity()]
-            }
-            
-        })();
-
-        // i can try and reduce the code below using parameters
-
-        // at the moment the function is giving the same activities for male, female and mix when called at the same time. 
-        // i want it to randomise each time it is called. 
-
+        // I also wanted a different set of activities and celebs for each argument if they were called at the same time.
         const snogMarryAvoid = sex => {
+
             if (sex === "male") {
-                return `${aArray[0]} - ${aArray[1]} - ${aArray[2]}: ${mArray[0]}, ${mArray[1]} and ${mArray[2]}`;
+                let act = arrGen(activities);
+                let m = arrGen(maleCelebs)
+                return `<div class="section"><span class="activities">${act[0]} - ${act[1]} - ${act[2]}<br></span> <span class="males">${m[0]}, ${m[1]} and ${m[2]}</span></div>`;
             };
 
             if (sex === "female") {
-                return `${aArray[0]} - ${aArray[1]} - ${aArray[2]}: ${fArray[0]}, ${fArray[1]} and ${fArray[2]}`;
+                let act = arrGen(activities);
+                let f = arrGen(femaleCelebs);
+                return `<div class="section"><span class="activities">${act[0]} - ${act[1]} - ${act[2]}<br></span> <span class="females">${f[0]}, ${f[1]} and ${f[2]}</span></div>`;
             }
 
-            
-
             if (sex === "mix") {
+                let act = arrGen(activities)
+                let m = arrGen(maleCelebs);
+                let f = arrGen(femaleCelebs)
                 const num = () => { return Math.ceil(Math.random()*2)};
-                
-                const whichArr = () => {
-                    return num() < 2 ? fArray: mArray;
+                // as this section is mixed, the function returns either a male or female depending on the outcome of maleFemale
+                const mF = () => {
+                    return num() < 2 ? m: f;
                 };
-                return `${aArray[0]} - ${aArray[1]} - ${aArray[2]}: ${whichArr()[0]}, ${whichArr()[1]} and ${whichArr()[2]}`;
+                return `<div class="section"><span class="activities">${act[0]} - ${act[1]} - ${act[2]}<br></span> <span class="mix">${mF()[0]}, ${mF()[1]} and ${mF()[2]}</span></div>`;
             }
             
         }
 
+        // What does this game do at the moment?
+        // - produces a random list of 3 activities and 3 random celebrities depending on the argument, so that you can then decide which activity you would do with which celeb. It can be run with all male, all female or a mix.
+
         // How to make this game better?
+
+        // - click on you favourite celeb out of the three to produce a image of them, perhaps this can be done without having an image of every celeb but by recalling the first image of a search with a string with their name? (names would be displayed using span classes so that they can be selected)
+
+        // - click on the celeb you'd most want to start a new life with and it generates a random life story for you both (might take too long)
 
         // - 
 
+        let maleP = document.getElementById("male");
+        maleP.innerHTML = snogMarryAvoid("male");
+
+        let femaleP = document.getElementById("female");
+        femaleP.innerHTML = snogMarryAvoid("female");
+
+        let mixP = document.getElementById("mix");
+        mixP.innerHTML = snogMarryAvoid("mix");
+
         
-        console.log(snogMarryAvoid("male"))
-        console.log(snogMarryAvoid("female"))
-        console.log(snogMarryAvoid("mix"))
 
        
         
