@@ -78,23 +78,48 @@
             
         }
 
-        .males {
+        .evening {
+            font-family: 'Lobster Two', cursive;
             font-size: 1.5em;
+
+        }
+
+        .males {
+            font-size: 1.7em;
             color: aqua;
             text-shadow: 1px 1px 1px black;
+            
+           
             
         }
 
         .females {
-            font-size: 1.5em;
+            font-size: 1.7em;
             color: bisque;
             text-shadow: 1px 1px 1px black;
+            
         }
 
         .mix {
-            font-size: 1.5em;
-            text-shadow: 1px 1px 1px black;
+            font-size: 1.7em;
             color: lightgreen;
+            text-shadow: 1px 1px 1px black;
+            
+            
+        }
+
+        .sun {
+            position: relative;
+            padding-right: 10px;
+            top: 10px;
+            opacity: 40%;
+        }
+
+        .moon {
+            position: relative;
+            padding-right: 10px;
+            top: 5px;
+            opacity: 40%;
         }
 
 
@@ -110,7 +135,7 @@
     <h2>Match a Celeb with a Date</h2>
 
     <div id= "textArea">
-
+        
         <p id="male"></p>
         <p id="female"></p>
         <p id="mix"></p>
@@ -121,7 +146,9 @@
 
     <script>
 
-        const activities = ["Candle Lit Dinner", "Salsa Dancing", "Dodgeball", "Sky Diving", "Skinny Dip", "Road Trip", "Table Tennis", "Beer Pong", "Tandem Bike Ride", "Jungle Hike", "Mud Wrestling", "White Water Rafting", "Silent Disco", "Gym Session", "Parasailing", "Arcade", "Monopoly", "Nudist Beach", "Go Karting", "Night in a Haunted House", "Pottery Class", "Wine Tasting", "Yoga Class", "Netflix Binge", "Food Fight", "Mini Golf", "Tobogganing", "Water Fight", "Roller Disco", "Get Drunk", "Paintballing", "Spa Weekend", "Sumo Wrestling", "Shark Cage", "Axe Throwing"]
+        const activities = ["Dodgeball", "Sky Diving", "Skinny Dip", "Road Trip", "Table Tennis", "Beer Pong", "Tandem Bike Ride", "Jungle Hike", "Mud Wrestling", "White Water Rafting", "Gym Session", "Parasailing", "Arcade", "Monopoly", "Nudist Beach", "Go Karting",  "Pottery Class", "Wine Tasting", "Yoga Class", "Food Fight", "Mini Golf", "Tobogganing", "Water Fight", "Paintballing", "Spa Day", "Sumo Wrestling", "Shark Cage", "Axe Throwing"];
+
+        const evening = ["Candle Lit Dinner", "Get Drunk", "Night in a Haunted House", "Salsa Dancing", "Netflix Binge", "Silent Disco", "Roller Disco", "Beach Stroll", "Casino", "Comedy Club", "Karaoke", "Opera", "Heavy Metal Gig"]
 
         const maleCelebs = ["Brad Pitt", "Tom Cruise", "Zac Efron", "Hugh Grant", "Jay-Z", "Hugh Jackman", "George Clooney", "Ryan Reynolds", "Daniel Craig", "Ed Sheeran", "Mel Gibson", "Vince Vaughn", "Jack Black", "Steve Buscemi", "Seth Rogen", "Andy Samberg", "Justin Bieber", "Michael Caine", "Simon Cowell", "Post Malone", "Sasha Baron Cohen", "Kanye West", "Piers Morgan", "Robert DeNiro", "James Corden", "Donald Trump", "Benedict Cumberbatch", "Elijah Wood", "Jimmy Carr", "Jared Leto", "Robert Pattinson", "Mark Wahlberg", "Shia LaBeouf", "Christian Bale", "Jonah Hill", "Will Ferrell", "Rupert Grint", "Russell Brand", "Tom Hanks", "Hugh Laurie", "Jack Nicholson", "Idris Elba", "Bill Hader", "Danny DeVito", "Arnold Schwarzenegger", "Anthony Hopkins", "Tommy Lee Jones", "Harry Styles"," Jim Carey", "Mike Myers", "Prince Harry", "Jude Law"];
         
@@ -134,8 +161,8 @@
             return array[Math.floor(Math.random()*i)];
         };
 
-        // this function takes a parameter of an array and calls the whichArr function on it to produce an array of 3 random elements, be it male celebs, female celebs, or activities.
-        // The function then runs a while loop on the array to ensure no three elements are the same, and returns myArray. 
+        // this function takes a parameter of an array and calls the whichArr function on it to produce an array of 4 random elements; male celebs or female celebs, activities and evening(activities).
+        // It then runs a while loop on the array to ensure no three elements are the same, and returns myArray. 
         
         const arrGen = arr => {
             
@@ -150,47 +177,56 @@
 
         // this function returns an array of three random activities and either male, female or mixed celebs depending on whether the parameter states "male", "female" or "mix".
 
-        // needed to call the arrGen function inside each if statement to avoid element reoccurrances. As I found out, if i call the function within the return statement for each element it produces a different array each time fromwhich picking a different index, therefore creating the possibility of celebs appearing more than once.
+        // needed to call the arrGen function inside each if statement to avoid element reoccurrances. As I found out, if i call the function within the return statement for each element it produces a different array each time, picking a different index, therefore creating the possibility of celebs appearing more than once.
 
-        // I also wanted a different set of activities and celebs for each argument if they were called at the same time.
+        // I also wanted a different set of activities and celebs for each argument if they were called at the same time, producing the same output for each section.
         const snogMarryAvoid = sex => {
 
             if (sex === "male") {
                 let act = arrGen(activities);
+                let eve = arrGen(evening)
                 let m = arrGen(maleCelebs)
-                return `<div class="section"><span class="activities">${act[0]} - ${act[1]} - ${act[2]}<br></span> <span class="males">${m[0]}, ${m[1]} and ${m[2]}</span></div>`;
+                return `<div class="section"><span class="males">${m[0]}, ${m[1]} and ${m[2]}</span><br><img class="sun" src ="Images/sun.png"><span class="activities">${act[0]} - ${act[1]} - ${act[2]}</span><br><img class ="moon" src ="Images/moon.png"><span class="evening">${eve[0]} - ${eve[1]} - ${eve[2]}</span></div>`;
             };
 
             if (sex === "female") {
                 let act = arrGen(activities);
+                let eve = arrGen(evening)
                 let f = arrGen(femaleCelebs);
-                return `<div class="section"><span class="activities">${act[0]} - ${act[1]} - ${act[2]}<br></span> <span class="females">${f[0]}, ${f[1]} and ${f[2]}</span></div>`;
+                return `<div class="section"> <span class="females">${f[0]}, ${f[1]} and ${f[2]}</span><br><img class="sun" src ="Images/sun.png"><span class="activities">${act[0]} - ${act[1]} - ${act[2]}</span><br><img class="moon" src ="Images/moon.png"><span class="evening">${eve[0]} - ${eve[1]} - ${eve[2]}</span></div>`;
             }
 
-            if (sex === "mix") {
-                let act = arrGen(activities)
-                let m = arrGen(maleCelebs);
-                let f = arrGen(femaleCelebs)
-                const num = () => { return Math.ceil(Math.random()*2)};
-                // as this section is mixed, the function returns either a male or female depending on the outcome of maleFemale
-                const mF = () => {
-                    return num() < 2 ? m: f;
-                };
-                return `<div class="section"><span class="activities">${act[0]} - ${act[1]} - ${act[2]}<br></span> <span class="mix">${mF()[0]}, ${mF()[1]} and ${mF()[2]}</span></div>`;
-            }
+
+            // Dont think the game needed this mix section in the end.
+
+
+            // if (sex === "mix") {
+            //     let act = arrGen(activities)
+            //     let eve = arrGen(evening)
+            //     let m = arrGen(maleCelebs);
+            //     let f = arrGen(femaleCelebs)
+            //     const num = () => { return Math.ceil(Math.random()*2)};
+            //     // as this section is mixed, the function returns either a male or female depending on the outcome of maleFemale
+                
+            //     // maybe if i turned this funtion into an IIFE, the below while loop would work??
+            //     const mF = () => {
+            //         return num() < 2 ? m: f;
+            //     };
+
+            
+            //     let mFArr = [mF()[0],mF()[1],mF()[2]];
+
+            //     console.log(mFArr);
+            //     while (mFArr === [m[0], m[1], m[2]] || mFArr === [f[0], f[1], f[2]]) {
+            //         mFArr = [mF()[0],mF()[1],mF()[2]];
+            //     }
+
+            //     return `<div class="section"><span class="mix">${mFArr[0]}, ${mFArr[1]} and ${mFArr[2]}</span><br><img class="sun" src ="Images/sun.png"><span class="activities">${act[0]} - ${act[1]} - ${act[2]}</span><br><img class ="moon" src ="Images/moon.png"><span class="evening">${eve[0]} - ${eve[1]} - ${eve[2]}</span></div>`;
+            //}
             
         }
 
-        // What does this game do at the moment?
-        // - produces a random list of 3 activities and 3 random celebrities depending on the argument, so that you can then decide which activity you would do with which celeb. It can be run with all male, all female or a mix.
-
-        // How to make this game better?
-
-        // - click on you favourite celeb out of the three to produce a image of them, perhaps this can be done without having an image of every celeb but by recalling the first image of a search with a string with their name? (names would be displayed using span classes so that they can be selected)
-
-        // - click on the celeb you'd most want to start a new life with and it generates a random life story for you both (might take too long)
-
-        // - 
+        
 
         let maleP = document.getElementById("male");
         maleP.innerHTML = snogMarryAvoid("male");
@@ -198,6 +234,7 @@
         let femaleP = document.getElementById("female");
         femaleP.innerHTML = snogMarryAvoid("female");
 
+        
         let mixP = document.getElementById("mix");
         mixP.innerHTML = snogMarryAvoid("mix");
 
