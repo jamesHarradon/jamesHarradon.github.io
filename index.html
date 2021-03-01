@@ -175,7 +175,7 @@
             return myArray;
         };
 
-        // this function returns an array of three random activities and either male, female or mixed celebs depending on whether the parameter states "male", "female" or "mix".
+        // this function returns an array of three random activities (day and night) and either male or female celebs depending on whether the parameter states "male" or "female".
 
         // needed to call the arrGen function inside each if statement to avoid element reoccurrances. As I found out, if i call the function within the return statement for each element it produces a different array each time, picking a different index, therefore creating the possibility of celebs appearing more than once.
 
@@ -197,7 +197,7 @@
             }
 
 
-            // Dont think the game needed this mix section in the end.
+            // Dont think the game needed this mix section in the end. Plus had a few problems with trying to get at least one male/famale to appear.
 
 
             // if (sex === "mix") {
@@ -208,7 +208,7 @@
             //     const num = () => { return Math.ceil(Math.random()*2)};
             //     // as this section is mixed, the function returns either a male or female depending on the outcome of maleFemale
                 
-            //     // maybe if i turned this funtion into an IIFE, the below while loop would work??
+            //     
             //     const mF = () => {
             //         return num() < 2 ? m: f;
             //     };
@@ -217,6 +217,9 @@
             //     let mFArr = [mF()[0],mF()[1],mF()[2]];
 
             //     console.log(mFArr);
+            //      
+            //      This while loop doesnt work because mFArr elements never equal m[0], m[1]...
+            //
             //     while (mFArr === [m[0], m[1], m[2]] || mFArr === [f[0], f[1], f[2]]) {
             //         mFArr = [mF()[0],mF()[1],mF()[2]];
             //     }
