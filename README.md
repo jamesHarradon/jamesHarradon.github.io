@@ -7,4 +7,4 @@ Based on the Snog Marry Avoid game, it generates three random celebrities, 3 day
 
 This uses HTML, CSS and Javascript. 
 
-[Click here to view page live](https://jamesharradon.github.io/)
+[Click here to view page live](https://jamesHarradon.github.io/)
