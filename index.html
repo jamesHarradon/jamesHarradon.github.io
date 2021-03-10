@@ -64,6 +64,10 @@
             
         }
 
+        #textArea {
+            min-height: 300px;
+        }
+
         .section {
             text-align: center;
             background-color: rgb(234, 255, 221);
@@ -122,6 +126,43 @@
             opacity: 40%;
         }
 
+        #btn {
+            width: 700px;
+            height:45px;
+            margin-top: 20px;
+            background-color: aqua;
+            border: none;
+            border-bottom: 2px solid rgb(0, 224, 224);
+            font-family: 'Lobster', cursive;
+            font-size: 1.5em;
+            text-shadow:
+                -1px -1px 0 white,
+                0   -1px 0 white,
+                1px -1px 0 white,
+                1px  0   0 white,
+                1px  1px 0 white,
+                0    1px 0 white,
+                -1px  1px 0 white,
+                -1px  0   0 white;
+            
+            
+
+        }
+
+        #btn:hover {
+            background-color: bisque;
+            border-bottom: 2px solid rgb(255, 206, 147);
+        }
+
+        
+
+        
+
+        
+
+        
+
+
 
 
     </style>
@@ -142,7 +183,7 @@
 
     </div>
 
-
+    <button id="btn" onclick="window.location.reload()">- Try your luck with a refresh -</button>
 
     <script>
 
